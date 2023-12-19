@@ -1,7 +1,7 @@
 const { AzureKeyCredential, OpenAIClient } = require('@azure/openai');
 const constants = require('../config/constants.js');
 
-const execute = async (request, callback) => {
+const execute = async (request) => {
   const client = new OpenAIClient(
     constants.NODE_AZURE_AI_KEY_ENDPOINT,
     new AzureKeyCredential(constants.NODE_AZURE_AI_KEY)
@@ -17,7 +17,7 @@ const execute = async (request, callback) => {
       throw err;
     });
 
-  callback(choices);
+  return choices;
 };
 
 const azure = {
