@@ -1,0 +1,10 @@
+const constants = {
+  LOCAL_PORT: 80,
+  NODE_OPENAI_KEY: process.env.NODE_OPENAI_KEY,
+  NODE_AZURE_AI_KEY: process.env.NODE_AZURE_AI_KEY,
+  NODE_AZURE_AI_KEY_DEPLOYMENT_ID: process.env.NODE_AZURE_AI_KEY_DEPLOYMENT_ID,
+  NODE_AZURE_AI_KEY_ENDPOINT: process.env.NODE_AZURE_AI_KEY_ENDPOINT,
+  NONE_VERTEX_PROJECT_ID: process.env.NONE_VERTEX_PROJECT_ID,
+};
+
+module.exports = constants;
