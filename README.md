@@ -33,6 +33,8 @@ npm start
 
 You need to add your credentials for each service you want to use. They are all ate file src/config/constants.js.
 
+You may also define them as environment variables, following the example at constants.js file.
+
 ### Open AI  
 Set the variable NODE_OPENAI_KEY with the key as created at https://platform.openai.com/api-keys. You'll need a valid account with credits.
 
