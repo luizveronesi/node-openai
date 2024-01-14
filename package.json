@@ -1,5 +1,5 @@
 {
-  "name": "idt-openai",
+  "name": "node-openai",
   "description": "",
   "author": "Luiz Veronesi",
   "type": "commonjs",
