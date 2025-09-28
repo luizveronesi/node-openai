@@ -1,15 +1,15 @@
-const azureService = require('../services/AzureService.js');
-const googleVertexService = require('../services/GoogleVertexService.js');
-const openAIService = require('../services/OpenAIService.js');
+import AzureService from '../services/AzureService.js';
+import GoogleService from './GoogleService.js';
+import OpenAIService from '../services/OpenAIService.js';
 
 const execute = async (req, callback) => {
   let engine;
   if (req.engine === 'google' || engine == 'vertex') {
-    engine = googleVertexService;
+    engine = GoogleService;
   } else if (req.engine === 'azure') {
-    engine = azureService;
+    engine = AzureService;
   } else if (req.engine === 'openai') {
-    engine = openAIService;
+    engine = OpenAIService;
   }
 
   if (!engine) throw new Error(`invalid engine: ${req.engine}`);
@@ -30,8 +30,8 @@ const execute = async (req, callback) => {
   callback(response);
 };
 
-const azure = {
+const EngineService = {
   execute,
 };
 
-module.exports = azure;
+export default EngineService;

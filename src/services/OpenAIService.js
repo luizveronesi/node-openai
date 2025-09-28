@@ -1,5 +1,5 @@
-const OpenAI = require('openai');
-const constants = require('../config/constants.js');
+import OpenAI from 'openai';
+import constants from '../config/constants.js';
 
 const execute = async (request) => {
   const client = new OpenAI({
@@ -13,8 +13,7 @@ const execute = async (request) => {
     messages: [
       {
         role: 'system',
-        content:
-          'You are a precise JSON generator. Always follow instructions exactly and output only valid JSON arrays.',
+        content: constants.systemMessage,
       },
       { role: 'user', content: request.prompt },
     ],
@@ -24,8 +23,8 @@ const execute = async (request) => {
   return choices;
 };
 
-const openai = {
+const OpenAIService = {
   execute,
 };
 
-module.exports = openai;
+export default OpenAIService;
