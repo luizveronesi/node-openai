@@ -7,14 +7,19 @@ const execute = async (request) => {
     temperature: 0,
   });
 
-  const { choices } = await client.chat.completions
-    .create({
-      messages: [{ role: 'user', content: request.prompt }],
-      model: 'gpt-3.5-turbo',
-    })
-    .catch((err) => {
-      throw err;
-    });
+  console.time('openai');
+  const { choices } = await client.chat.completions.create({
+    model: 'gpt-5-mini',
+    messages: [
+      {
+        role: 'system',
+        content:
+          'You are a precise JSON generator. Always follow instructions exactly and output only valid JSON arrays.',
+      },
+      { role: 'user', content: request.prompt },
+    ],
+  });
+  console.timeEnd('openai');
 
   return choices;
 };
