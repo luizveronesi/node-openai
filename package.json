@@ -7,12 +7,13 @@
     "@azure/openai": "^1.0.0-beta.7",
     "@google-cloud/aiplatform": "^3.5.0",
     "atob": "^2.1.2",
+    "axios": "^1.9.0",
     "body-parser": "1.18.2",
     "cors": "^2.8.4",
     "express": "^4.17.1",
     "langchain": "^0.0.184",
     "npm": "^6.10.0",
-    "openai": "^4.17.0",
+    "openai": "^5.23.1",
     "request": "^2.88.0"
   },
   "engines": {
@@ -31,9 +32,9 @@
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.61.0",
     "eslint": "^8.44.0",
+    "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.1",
-    "eslint-config-google": "^0.14.0"
+    "eslint-plugin-react-refresh": "^0.4.1"
   }
 }

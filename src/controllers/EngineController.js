@@ -1,7 +1,9 @@
 const express = require('express');
 const engineService = require('../services/EngineService.js');
+const { OllamaLLM } = require('../services/OllamaService.js');
 
 const router = express.Router();
+const llm = new OllamaLLM({ model: 'llama3' });
 
 router.post('', async (req, res) => {
   try {
@@ -11,6 +13,11 @@ router.post('', async (req, res) => {
   } catch (e) {
     res.status(400).send(e.message || e);
   }
+});
+
+router.get('/ollama', async (req, res) => {
+  const result = await llm.invoke("Is 'Dr.' an abbreviation?");
+  res.send(result.trim());
 });
 
 module.exports = router;

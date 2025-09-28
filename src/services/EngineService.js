@@ -2,7 +2,6 @@ const azureService = require('../services/AzureService.js');
 const googleVertexService = require('../services/GoogleVertexService.js');
 const openAIService = require('../services/OpenAIService.js');
 
-// TODO: implement strategy in the future
 const execute = async (req, callback) => {
   let engine;
   if (req.engine === 'google' || engine == 'vertex') {
@@ -19,9 +18,9 @@ const execute = async (req, callback) => {
 
   let response;
   if (Array.isArray(result) && result.length > 0) {
-    response = {
-      value: result[0].message?.content,
-    };
+    let output = result[0].message?.content.trim();
+    output = output.replace(/^```json\s*|```$/g, '');
+    response = JSON.parse(output);
   } else {
     response = {
       value: result,
