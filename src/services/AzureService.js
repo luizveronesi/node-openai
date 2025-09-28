@@ -1,27 +1,27 @@
-const { AzureKeyCredential, OpenAIClient } = require('@azure/openai');
-const constants = require('../config/constants.js');
+import { AzureOpenAI } from 'openai';
+import constants from '../config/constants.js';
 
 const execute = async (request) => {
-  const client = new OpenAIClient(
-    constants.NODE_AZURE_AI_KEY_ENDPOINT,
-    new AzureKeyCredential(constants.NODE_AZURE_AI_KEY)
-  );
+  const client = new AzureOpenAI(constants.azureOptions);
 
-  const messages = [{ role: 'user', content: request.prompt }];
+  const messages = [
+    {
+      role: 'system',
+      content: constants.systemMessage,
+    },
+    { role: 'user', content: request.prompt },
+  ];
 
-  const { choices } = await client
-    .getChatCompletions(constants.NODE_AZURE_AI_KEY_DEPLOYMENT_ID, messages, {
-      temperature: 0,
-    })
-    .catch((err) => {
-      throw err;
-    });
+  const response = await client.chat.completions.create({
+    messages,
+    temperature: 1,
+  });
 
-  return choices;
+  return response.choices;
 };
 
-const azure = {
+const AzureService = {
   execute,
 };
 
-module.exports = azure;
+export default AzureService;

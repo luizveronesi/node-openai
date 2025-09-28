@@ -1,9 +1,8 @@
-const cors = require('cors');
-const express = require('express');
-const bodyParser = require('body-parser');
-const constants = require('./constants.js');
-
-const engineController = require('../controllers/EngineController.js');
+import cors from 'cors';
+import express from 'express';
+import bodyParser from 'body-parser';
+import constants from './constants.js';
+import engineController from '../controllers/EngineController.js';
 
 const app = express();
 

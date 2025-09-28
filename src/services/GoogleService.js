@@ -1,5 +1,5 @@
-const { GoogleVertexAI } = require('langchain/llms/googlevertexai');
-const constants = require('../config/constants.js');
+import { GoogleVertexAI } from 'langchain/llms/googlevertexai';
+import constants from '../config/constants.js';
 
 const execute = async (request) => {
   const model = new GoogleVertexAI({
@@ -15,8 +15,8 @@ const execute = async (request) => {
   return await model.call(request.prompt);
 };
 
-const vertex = {
+const GoogleService = {
   execute,
 };
 
-module.exports = vertex;
+export default GoogleService;
